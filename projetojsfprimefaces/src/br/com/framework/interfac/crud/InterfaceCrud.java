@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.framework.implementacao.crud.SimpleJdbcClassImpl;
+
 
 @Component
 @Transactional
@@ -75,6 +77,7 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	SimpleJdbcInsert getSimpleJdbcInsert();
 	
+	//SimpleJdbcClassImpl getSimpleJdbcClassImpl();
 	
 	Long totalRegistro(String table) throws Exception;
 	
@@ -84,6 +87,8 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	//Carregamento dinâmico com JSF e PrimeFaces
 	List<T> findListByQueryDinamica(String query,  int iniciaNoRegistro, int maximoResultado) throws Exception;
+
+
 	
 		
 	

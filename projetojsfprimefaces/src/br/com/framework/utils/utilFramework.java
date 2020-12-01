@@ -1,0 +1,23 @@
+package br.com.framework.utils;
+
+import java.io.Serializable;
+
+import org.springframework.stereotype.Component;
+
+/**
+ * Classe importante para auditoria
+ * @author ander
+ *
+ */
+
+@Component
+public class utilFramework implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private static ThreadLocal<Long> threadLocal = new ThreadLocal<Long>();
+	
+	public synchronized static ThreadLocal<Long> geThreadLocal(){
+		return threadLocal;
+	}
+}

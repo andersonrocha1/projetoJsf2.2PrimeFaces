@@ -19,9 +19,9 @@
 	minEvictableIdleTimeMillis="60000" 
 	antiJARLocking="false" 
 	antiResourceLocking="false" 
-	username="caixasuper" 
+	username="postgres" 
 	password="19801980" 
-	url="jdbc:postgresql://localhost:5432/caixasuper?autoReconect=true">
+	url="jdbc:postgresql://localhost:5432/comerciomais?autoReconect=true">
 	
 	<!-- Classe do servidor TomCat que está lendo este arquivo é o org.apache.tomcat.dbcp.PoolingDataSource -->
 	<!-- Pool de Conexões -->

@@ -10,8 +10,7 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 	default-lazy-init="true" default-autowire="byType">
 
-	<bean id="servletAppletImprimir" name="servletAppletImprimir"
-		class="br.com.project.servlet.ServletAppletImprimir" />
+
 
 </beans>
 

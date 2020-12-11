@@ -5,7 +5,7 @@
 	name="jdbc/datasource" 
 	auth="Container" 
 	type="javax.sql.DataSource" 
-	defaultAutoCommit="false"
+	defaultAutoCommit='false'
 	maxActive="50" 
 	maxIdle="10" 
 	maxWait="10" 
@@ -21,7 +21,7 @@
 	antiResourceLocking="false" 
 	username="postgres" 
 	password="19801980" 
-	url="jdbc:postgresql://localhost:5432/comerciomais?autoReconect=true">
+	url="jdbc:postgresql://localhost:5432/comerciomais?autoReconnect=true">
 	
 	<!-- Classe do servidor TomCat que está lendo este arquivo é o org.apache.tomcat.dbcp.PoolingDataSource -->
 	<!-- Pool de Conexões -->

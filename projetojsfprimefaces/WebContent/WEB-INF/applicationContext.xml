@@ -34,14 +34,12 @@
 	<context:component-scan base-package="br.com.framework.interfac.crud"/>
 	
 	<!-- Inicializa a indentificação de ambiente de execução -->
-	<bean id="BeanProperty" class="br.com.project.util.all.BeanProperty" scope="singleton" >
-		<constructor-arg name="springTest" value="false" />
-	</bean>
+	
 	
 	<!-- Data Source -->
 	<bean id="springDataSource" name="springDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="false">
 		<property name="jndiName">
-			<value>java:comp/env/jdbc/datasouce</value> 
+			<value>java:comp/env/jdbc/datasource</value> 
 		</property>
 	</bean>
 	
@@ -52,7 +50,7 @@
     	<property name="sqlMigrationPrefix" value="v"/> 
     	<property name="sqlMigrationSeparator" value="_"/>
     	<property name="encoding" value="ISO-8859-1"/>
-    	<property name="validateOnMigrate" value="false"/>
+    	<property name="validateOnMigrate" value="true"/>
 	</bean>
 	
 	<!-- Transação -->

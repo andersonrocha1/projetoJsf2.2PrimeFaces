@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Context reloadable="true">
-	<Resources 
+	<Resource 
 	name="jdbc/datasource" 
 	auth="Container" 
 	type="javax.sql.DataSource" 
@@ -21,12 +21,12 @@
 	antiResourceLocking="false" 
 	username="postgres" 
 	password="19801980" 
-	url="jdbc:postgresql://localhost:5432/comerciomais?autoReconnect=true">
+	url="jdbc:postgresql://localhost:5432/comerciomais?autoReconnect=true"/>
 	
 	<!-- Classe do servidor TomCat que está lendo este arquivo é o org.apache.tomcat.dbcp.PoolingDataSource -->
 	<!-- Pool de Conexões -->
 	<!-- https://tomcat.apache.org/tomcat-9.0-doc/pool.html -->
 
-	</Resources>
+	
 
 </Context>

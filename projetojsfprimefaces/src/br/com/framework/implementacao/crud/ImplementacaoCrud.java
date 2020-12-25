@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.interfac.crud.InterfaceCrud;
+import br.com.project.model.classes.Entidade;
 
 
 @Component
@@ -286,6 +287,34 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return lista;
 		
 	}
+
+	public T findUninqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception {
+		validaSessionFactory();
+		StringBuilder query = new StringBuilder();
+		
+		query.append("select entity from ").append(entidade.getSimpleName())
+		.append(" entity where entity.").append(atributo)
+		.append(" = '").append(valor).append("' ").append(condicao);
+
+		T obj = this.findUniqueByQueryDinamica(query.toString());
+
+		return obj;
+		
+		
+	}
+
+	/**
+	 * TestUnit Ok
+	 */
+	@Override
+	public T findUniqueByQueryDinamica(String query) throws Exception {
+		validaSessionFactory();
+		T obj = (T) sessionFactory.getCurrentSession()
+				.createQuery(query.toString()).uniqueResult();
+		return obj;
+	}
+	
+	
 	
 	
 

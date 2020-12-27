@@ -148,8 +148,8 @@ function ocultarMenu() {
 	}
 	
 	function abrirMenupop() {
-	  $('#menupop').show('slow').mouseleave(function() {
-	  	fecharMenupop();
+	  $("#menupop").show('slow').mouseleave(function() {
+	  		fecharMenupop();
 	  });
 	}
 	

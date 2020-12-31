@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.Estado;
 
 
 @Component
@@ -313,6 +314,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 				.createQuery(query.toString()).uniqueResult();
 		return obj;
 	}
+
+	
 	
 	
 	

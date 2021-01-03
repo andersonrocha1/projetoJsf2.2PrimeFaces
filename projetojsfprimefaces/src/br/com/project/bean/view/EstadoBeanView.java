@@ -33,6 +33,20 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 		
 		return estadoController.getListEstado();
 	}
+
+
+	@Override
+	protected Class<Estado> getClassImplemente() {
+		
+		return Estado.class;
+	}
+
+
+	@Override
+	protected InterfaceCrud<Estado> getController() {
+		
+		return estadoController;
+	}
 	
 
 

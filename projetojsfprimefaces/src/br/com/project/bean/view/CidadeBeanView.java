@@ -27,6 +27,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 	
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	
 	private List<Cidade> list = new ArrayList<Cidade>();
 		
@@ -44,27 +45,70 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
-	public String novo() throws Exception {
+	public void saveNotReturn() throws Exception {
+		list.clear();
+		objetoSelecionado = cidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
 		objetoSelecionado = new Cidade();
+		sucesso();
+	}
+	
+	@Override
+	public void saveEdit() throws Exception {
+	
+		saveNotReturn();
+	}
+	
+	@Override
+	public String novo() throws Exception {
+		setarVariaveisNulas();
 		return url;
 	}
 	
 	@Override
 	public String editar() throws Exception {
-		
+		list.clear();
 		return url;
 	}
 	
 	@Override
 	public void excluir() throws Exception {
-		
+		objetoSelecionado = (Cidade) cidadeController.getSession().get(getClassImplemente(), objetoSelecionado.getCid_codigo());
 		cidadeController.delete(objetoSelecionado);
+		list.remove(objetoSelecionado);
 		novo();
+		sucesso();
 	}
+	
+	@Override
+	public void setarVariaveisNulas() throws Exception {
+		
+		list.clear();
+		objetoSelecionado = new Cidade();
+	}
+	
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		setarVariaveisNulas();
+		return urlFind;
+	}
+	
+	@Override
+	protected Class<Cidade> getClassImplemente() {
+		
+		return Cidade.class;
+	}
+	
+	@Override
+	protected InterfaceCrud<Cidade> getController() {
+		
+		return cidadeController;
+	}
+	
 	
 	public List<Cidade> getList() throws Exception {
 		
-		list = cidadeController.findList(Cidade.class);
+		list = cidadeController.findList(getClassImplemente());
 		return list;
 	}
 
@@ -83,6 +127,10 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	public void setCidadeController(CidadeController cidadeController) {
 		this.cidadeController = cidadeController;
 	}
+
+	
+
+	
 
 	
 	

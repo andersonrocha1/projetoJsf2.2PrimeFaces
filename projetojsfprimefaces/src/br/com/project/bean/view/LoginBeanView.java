@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.SessionControllerImpl;
 import br.com.srv.interfaces.SrvLogin;
@@ -81,6 +82,18 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	        	FacesContext.getCurrentInstance().addMessage("msg", message);
 	        
 	        context.addCallbackParam("loggedIn", loggedIn);
+	}
+
+	@Override
+	protected Class<?> getClassImplemente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected InterfaceCrud<?> getController() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

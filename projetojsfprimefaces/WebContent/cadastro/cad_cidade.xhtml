@@ -11,7 +11,7 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
-		 <c:set var="isCadastro" value="true" scope="view"/>
+			<c:set var="isCadastro" value="true" scope="view" />
 			<p:panel header="Cadastro de Cidade" id="panelCadastro">
 
 				<h:panelGrid id="gridCidade" columns="3">
@@ -29,111 +29,59 @@
 						styleClass="estyleInputName" required="true" maxlength="100"
 						requiredMessage="Informe o nome da cidade." />
 					<p:message for="cidadeNome" />
-					
+
 					<h:outputLabel for="estado" id="labelEstado" value="Estado * :" />
-					<p:selectOneMenu id="estado" required="true" style="width:200px;"  
+					<p:selectOneMenu id="estado" required="true" style="width:200px;"
 						requiredMessage="Informe o estado."
 						value="#{cidadeBeanView.objetoSelecionado.estado}">
 						<f:selectItems value="#{estadoBeanView.estados}" />
 					</p:selectOneMenu>
 					<p:message for="estado" />
-					
+
 				</h:panelGrid>
 			</p:panel>
 			<div class="espacoBranco" />
+
+			<util:botoesCrud managedBeanView="#{cidadeBeanView}"
+			camposReload=":formTemplate:msg, tableResult"
+			botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+			botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_SALVAR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo == null}"
+			botaoAtualizar="#{contextoBean.possuiAcesso('ACESSO_EDITAR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}"
+			botaoExcluir="#{contextoBean.possuiAcesso('ACESSO_EXCLUIR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}">
 			
-			<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"></p:commandButton>
-			<p:commandButton value="Novo" ajax="false" actionListener="#{cidadeBeanView.novo}"></p:commandButton>
+				
+			
+			</util:botoesCrud>
 
 		</h:form>
-		
+
 		<script type="text/javascript" charset="UTF-8">
 			addFocoAoCampo('cidadeNome');
 			gerenciaTeclaEnter();
 		</script>
-		
+
 		<div class="espacoBranco" />
-		
-		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" 
+
+		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"
 			var="objeto" emptyMessage="Não existem valores para exibição."
-			rendered="#{cidadeBeanView.list.size() > 0}" 
-			rows="5" paginator="true" paginatorPosition="bottom"
+			rendered="#{cidadeBeanView.list.size() > 0}" rows="5"
+			paginator="true" paginatorPosition="bottom"
 			paginatorTemplate="
 			{FirstPageLink}
 			{PreviousPageLink} 
 			{PageLinks} 
 			{NextPageLink} 
 			{LastPageLink} 
-			{RowsPerPageDropdown}" >
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Código</f:facet>
-					<h:outputText value="#{objeto.cid_codigo}"></h:outputText>
-				
-				</center>
-				
-			</p:column>
-			<p:column>
-				<center>
-					<f:facet name="header">Cidade</f:facet>
-					<h:outputText value="#{objeto.cid_descricao}"></h:outputText>
-				
-				</center>
-			
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{objeto.estado.est_nome}"></h:outputText>
-				
-				</center>
-			
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Editar</f:facet>
-					<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade" ajax="true" immediate="true"
-					
-					update="@form:formCadastro">
-					<h:graphicImage library="img" name="Editar.png"></h:graphicImage>
-					
-						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}">
-						
-						</f:setPropertyActionListener>
-					
-					</p:commandLink>
-				
-				</center>
-			
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Excluir</f:facet>
-					<p:commandLink action="#{cidadeBeanView.excluir}" id="excluirCidade" ajax="true" immediate="true"
-					
-					update="tableResult">
-					<h:graphicImage library="img" name="Excluir.png"></h:graphicImage>
-					
-						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}">
-						
-						</f:setPropertyActionListener>
-					
-					</p:commandLink>
-				
-				</center>
-			
-			</p:column>
+			{RowsPerPageDropdown}">
 
-
+			
+			
+		<ui:include src="/resources/components/colunasDataTableCidade.xhtml"></ui:include>
 			
 		</p:dataTable>
-		
-		
-		
+
+
+
 	</ui:define>
 </ui:composition>
 </html>

@@ -112,7 +112,7 @@ public class ReportUtil implements Serializable {
 			extensaoArquivoExportado = EXTENSION_PDF;
 			break;
 		case ReportUtil.RELATORIO_HTML:
-			tipoArquivoExportado = new JRHtmlExporter();
+			tipoArquivoExportado =  new JRHtmlExporter();
 			extensaoArquivoExportado = EXTENSION_HTML;
 			break;
 		case ReportUtil.RELATORIO_EXCEL:

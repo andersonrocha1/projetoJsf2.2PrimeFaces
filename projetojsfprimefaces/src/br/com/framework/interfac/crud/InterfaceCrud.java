@@ -94,6 +94,9 @@ public interface InterfaceCrud<T> extends Serializable {
 	T findUniqueByQueryDinamica(String query) throws Exception;
 
 
+	List<T> finListOrderByProperty(Class<T> entidade, String propriedade);
+
+
 	
 		
 	

@@ -22,7 +22,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRHtmlExporter;
+//import net.sf.jasperreports.engine.export.JRHtmlExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
@@ -111,10 +111,12 @@ public class ReportUtil implements Serializable {
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;
 			break;
+			/*
 		case ReportUtil.RELATORIO_HTML:
-			tipoArquivoExportado =  new JRHtmlExporter();
+			tipoArquivoExportado =  new JRHtmlExporter;
 			extensaoArquivoExportado = EXTENSION_HTML;
 			break;
+			*/
 		case ReportUtil.RELATORIO_EXCEL:
 			tipoArquivoExportado = new JRXlsExporter();
 			extensaoArquivoExportado = EXTENSION_XLS;

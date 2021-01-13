@@ -140,6 +140,21 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 		return lista;
 	}
+	
+	/**
+	 * TestUnit ok
+	 */
+	@Override
+	public List<T> finListOrderByProperty(Class<T> entidade, String propriedade) {
+		validaSessionFactory();
+		StringBuilder query = new StringBuilder();
+		query.append("select entity from ").append(entidade.getSimpleName())
+				.append(" entity ").append(" order by entity.")
+				.append(propriedade);
+		List<T> lista = sessionFactory.getCurrentSession()
+				.createQuery(query.toString()).list();
+		return lista;
+	}
 
 	@Override
 	public void executeUpdateQueryDinamica(String s) throws Exception {

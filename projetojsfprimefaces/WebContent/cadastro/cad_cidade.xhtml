@@ -11,7 +11,7 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<h:commandLink immediate="true">
-			<f:setPropertyActionListener  target="#{cidadeBeanView.tipoRelatorio}" value="1"/>
+			<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="1"/>
 			<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
 			<h:graphicImage library="img" name="pdf.png"/>
 	

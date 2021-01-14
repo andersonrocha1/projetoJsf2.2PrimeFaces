@@ -117,7 +117,7 @@
   						
   						<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">	 
 							<p:menuitem value="cidade" id="menuCidade"
-								action="/cadastro/cad_cidade.jsf?faces-redirect=true "
+								action="#{cidadeBeanView.redirecionarFindEntidade}"
 								/>
 						</sec:ifAnyGranted>
   					

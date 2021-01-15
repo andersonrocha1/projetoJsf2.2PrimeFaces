@@ -12,7 +12,8 @@ import br.com.project.listener.ContextLoaderListenerUtils;
 /**
  * Classe que implementa o carregamento preguiçoso (Carregamento por demanda) para os dataTable do primefaces das telas
  * Assim os carregamentos das tabelas quando tiver muitos registros serão sempre rapidos e sem lentidão
- * @author alex
+ * 
+ * @author ander
  *
  * @param <T>
  */
@@ -62,7 +63,7 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 		this.list.remove(objetoSelecionado);
 	}
 
-	public void clear() {
+	public void clean() {
 		this.query = null;
 		this.totalRegistroConsulta = 0;
 		this.list.clear();

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
+import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
 
@@ -29,7 +30,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	
-	private List<Cidade> list = new ArrayList<Cidade>();
+	private CarregamentoLazyListForObject<Cidade> list = new CarregamentoLazyListForObject<Cidade>();
 		
 	private Cidade objetoSelecionado = new Cidade();
 	
@@ -46,7 +47,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-		list.clear();
+		list.clean();
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		list.add(objetoSelecionado);
 		objetoSelecionado = new Cidade();
@@ -67,7 +68,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String editar() throws Exception {
-		list.clear();
+		list.clean();
 		return url;
 	}
 	
@@ -83,7 +84,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void setarVariaveisNulas() throws Exception {
 		
-		list.clear();
+		list.clean();
 		objetoSelecionado = new Cidade();
 	}
 	
@@ -106,6 +107,14 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
+	public void consultaEntidade() throws Exception {
+		objetoSelecionado = new Cidade();
+		list.clean();
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
+		super.consultaEntidade();
+	}
+	
+	@Override
 	public StreamedContent getArquivoReport() throws Exception {
 		super.setNomeRelatorioJasper("relat_cidades");
 		super.setNomeRelatorioSaida("relat_cidades");
@@ -113,9 +122,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return super.getArquivoReport();
 	}
 	
-	public List<Cidade> getList() throws Exception {
-		
-		list = cidadeController.findList(getClassImplemente());
+	public CarregamentoLazyListForObject<Cidade> getList() throws Exception {
+
 		return list;
 	}
 
@@ -133,6 +141,12 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	public void setCidadeController(CidadeController cidadeController) {
 		this.cidadeController = cidadeController;
+	}
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

@@ -47,6 +47,13 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 		
 		return estadoController;
 	}
+
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 

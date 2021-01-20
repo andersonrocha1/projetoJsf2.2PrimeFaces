@@ -1,6 +1,7 @@
 package br.com.project.geral.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,5 +38,17 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 	public boolean existeUsuario(String ent_login) {
 		return srvEntidade.existeUsuario(ent_login);
 	}
+
+	public Entidade findUninqueByPropertyId(Class<Entidade> class1, Long codResponsavel, String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Entidade> pesquisaPorNome(String nome) throws Exception {
+		
+		return (List<Entidade>) getSession().createQuery(" from Entidade where ent_nomefantasia like '%" + nome + "%'").list();
+	}
+
+
 
 }

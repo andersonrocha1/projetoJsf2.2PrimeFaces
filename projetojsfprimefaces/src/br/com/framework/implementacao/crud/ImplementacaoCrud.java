@@ -115,7 +115,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		
 		validaSessionFactory();
 		
-		Object obj = sessionFactory.getCurrentSession().load(getClass(), id);
+		Object obj = sessionFactory.getCurrentSession().load(entidade, id);
 		
 		return obj;
 	}
@@ -125,7 +125,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		
 		validaSessionFactory();
 		
-		T obj = (T) sessionFactory.getCurrentSession().load(getClass(), id);
+		T obj = (T) sessionFactory.getCurrentSession().load(entidade, id);
 		
 		return obj;
 		

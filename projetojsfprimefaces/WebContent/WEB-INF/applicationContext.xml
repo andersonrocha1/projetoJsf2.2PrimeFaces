@@ -111,9 +111,8 @@
 	</bean>
 	
 	<!-- Bean de contexto application -->	
+	<bean id="contextoBean" class=" br.com.project.bean.view.ContextoBean" scope="session" lazy-init="false"/>
 	<bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/>
-
-
 	<bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/>
 	
 	<!-- SERVICES -->
@@ -126,10 +125,13 @@
 	<bean id="repositoryEntidade" class="br.com.dao.implementacao.DaoEntidade"/>
 	
 	<!-- CONTROLLERS -->
-	<bean id="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
-	<bean id="estadoController" class="br.com.project.geral.controller.EstadoController" />
-	<bean id="cidadeController" class="br.com.project.geral.controller.CidadeController" />
-	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
+	<bean id="interfaceCrud" class="br.com.framework.implementacao.crud.ImplementacaoCrud" scope="singleton" lazy-init="false"/>
+	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
+	<bean id="entidadeController" name="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
+	<bean id="mensagemController" name="mensagemController" class="br.com.project.geral.controller.MensagemController" />
+	<bean id="estadoController"   name="estadoController"   class="br.com.project.geral.controller.EstadoController" />
+	<bean id="cidadeController"   name="cidadeController"   class="br.com.project.geral.controller.CidadeController" />
+	<bean id="sessionController"  class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
 	
 	
 </beans>

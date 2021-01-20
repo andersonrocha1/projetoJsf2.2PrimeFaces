@@ -154,7 +154,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		
 	}
 
-	public String getSqlLazyQuery() {
+	public String getSqlLazyQuery() throws Exception {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select entity from ");
 	
@@ -164,9 +164,45 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		return sql.toString();
 	}
 
-	private String getQueryConsulta() {
+	private String getQueryConsulta() throws Exception {
+		valorPesquisa = new UtilitariaRegex().retiraAcentos(valorPesquisa);
+		StringBuilder sql = new StringBuilder();
+		sql.append(getClassImplemente().getSimpleName());
+		sql.append(" entity where ");
 		
-		return null;
+		sql.append(" retira_acentos(upper(cast(entity.");
+		sql.append(objetoCampoConsultaSelecionado.getCampobanco());
+		sql.append(" as text))) ");
+		if(condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.IGUAL_A.name())) {
+			
+			sql.append(" = retira_acentos(upper('");
+			sql.append(valorPesquisa);
+			sql.append("'))");	
+		}else if(condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.CONTEM.name())) {
+			
+			sql.append(" like retira_acentos(upper('%");
+			sql.append(valorPesquisa);
+			sql.append("%'))");	
+	
+		}else if(condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.TERMINA_COM.name())) {
+			
+			sql.append(" like retira_acentos(upper('%");
+			sql.append(valorPesquisa);
+			sql.append("'))");	
+	
+		}else if(condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.INICIA_COM.name())) {
+			
+			sql.append(" like retira_acentos(upper('");
+			sql.append(valorPesquisa);
+			sql.append("%'))");	
+	
+		}
+		
+		sql.append(" ");
+		sql.append(condicaoAndParaPesquisa());
+		
+		
+		return sql.toString();
 	}
 
 	public int totalRegistroConsulta() throws Exception {

@@ -28,13 +28,7 @@
 		
 		<c:set var="isCadastro" value="false" scope="view"/>
 		
-		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHiddenTitulo}" value="#{cc.attrs.tipoTituloEmAberto}" immediate="true">
-			<f:attribute name="tipoTituloEmAberto" value="#{cc.attrs.tipoTituloEmAberto}"/>
-		</h:inputHidden>
-		
-		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}" immediate="true">
-			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
-		</h:inputHidden>
+	
 
 		<h:panelGrid columns="2">
 			<h:column rendered="#{!cc.attrs.ocultaNovo}">
@@ -55,7 +49,7 @@
 				<h:panelGrid id="panelGridPesquisa" columns="7">
 					<h:outputLabel for="campo" id="labelCampo" value="Campo :"/>
 					<p:selectOneMenu style="width: 150px;" id="campo" onchange="addMascaraPesquisa(this.value);"
-						value="#{cc.attrs.managedBeanView.campoPesquisaSelecionado}">
+						value="#{cc.attrs.managedBeanView.objetoCampoConsultaSelecionado}">
 						<f:selectItems var="campoPesquisaSelecionado"
 							id="itensCampoPesquisa"
 							itemLabel="#{campoPesquisaSelecionado.descricao}" 
@@ -84,9 +78,7 @@
 									  oncomplete="addFocoAoCampo('valorPesquisa');"
 									  onsuccess="addFocoAoCampo('valorPesquisa');"
 									  update=":formTemplate:msg, tableResult">
-					    <h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}" immediate="true">
-								<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}" />
-						</h:inputHidden>
+					   
 						<f:param name="consultarInativos" value="#{cc.attrs.consultarInativos}"/>
 					</p:commandButton>
 				</h:panelGrid>

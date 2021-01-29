@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -22,7 +21,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,8 +29,6 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.CollectionOfElements;
-import org.hibernate.annotations.ForeignKey;
-import org.hibernate.annotations.Index;
 import org.hibernate.envers.Audited;
 import org.primefaces.json.JSONObject;
 
@@ -74,6 +70,8 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimaacesso;
 	
+	
+	
 	@CollectionOfElements
 	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "entidadeacesso", uniqueConstraints = { @UniqueConstraint(name = "unique_acesso_entidade_key", columnNames = {
@@ -83,9 +81,48 @@ public class Entidade implements Serializable {
 	
 	private String tipoEntidade = "";
 	
+	@Column(length = 100)
+	private String ent_email;
+	
+	@Column(nullable = true)
+	private Boolean ent_mudarsenha;
+	
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date ent_datacadastro = new Date();
+	
+	@Version
+	@Column(name = "versionNum")
+	private int versionNum;
 
+	protected int getVersionNum() {
+		return versionNum;
+	}
+
+	public void setVersionNum(int versionNum) {
+		this.versionNum = versionNum;
+	}
 	
 	
+	
+	public String getEnt_email() {
+		return ent_email;
+	}
+	public void setEnt_email(String ent_email) {
+		this.ent_email = ent_email;
+	}
+	public Boolean getEnt_mudarsenha() {
+		return ent_mudarsenha;
+	}
+	public void setEnt_mudarsenha(Boolean ent_mudarsenha) {
+		this.ent_mudarsenha = ent_mudarsenha;
+	}
+	public Date getEnt_datacadastro() {
+		return ent_datacadastro;
+	}
+	public void setEnt_datacadastro(Date ent_datacadastro) {
+		this.ent_datacadastro = ent_datacadastro;
+	}
 	public TipoCadastro getEnt_tipo() {
 		return ent_tipo;
 	}
@@ -203,5 +240,13 @@ public class Entidade implements Serializable {
 		map.put("ent_nomefantasia", ent_nomefantasia);
 		return new JSONObject(map);
 	}
+
+	@Override
+	public String toString() {
+		return "Entidade [ent_codigo=" + ent_codigo + ", ent_login=" + ent_login + ", ent_senha=" + ent_senha
+				+ ", ent_nomefantasia=" + ent_nomefantasia + "]";
+	}
+	
+	
 
 }

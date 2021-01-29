@@ -41,7 +41,7 @@
 						<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade"
 							ajax="true" immediate="true"
 							oncomplete="addFocoAoCampo('cidadeNome');"
-							update="@form:formCadastro">
+							update="@form">
 							<h:graphicImage library="img" name="Editar.png"></h:graphicImage>
 
 							<f:setPropertyActionListener value="#{objeto}"

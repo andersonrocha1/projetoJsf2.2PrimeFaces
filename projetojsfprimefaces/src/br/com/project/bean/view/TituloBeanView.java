@@ -40,9 +40,9 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	private String urlBaixar = "/cadastro/financeiro/baixar_titulo.jsf?faces-redirect=true";
 	
 	
-	public void init() throws Exception {
+	/*public void init() throws Exception {
 		objetoSelecionado.setEnt_codigoabertura(contextoBean.getEntidadeLogada());
-	}
+	}*/
 
 	@Resource
 	private TituloController tituloController;

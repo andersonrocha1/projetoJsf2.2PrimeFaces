@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relat_estados" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ffbdc8c9-ec87-4061-a037-d5546f924ed5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="est_id" class="java.lang.Long">
+		<fieldDescription><![CDATA[est_id]]></fieldDescription>
+	</field>
+	<field name="est_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[est_nome]]></fieldDescription>
+	</field>
+	<field name="est_uf" class="java.lang.String">
+		<fieldDescription><![CDATA[est_uf]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="14" y="0" width="283" height="79" uuid="3eacaba8-228f-4be9-b030-6d36c824435f"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Relatório de Estados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="26">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="8b812568-52ba-4c3d-b876-720922eb20a6"/>
+				<text><![CDATA[est_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="2" width="309" height="20" uuid="9c161c08-a77d-42c0-8187-5d40c1069477"/>
+				<text><![CDATA[est_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="2" width="100" height="20" uuid="de6ee0d0-db3f-4b5b-93fe-66ad9ab18f3d"/>
+				<text><![CDATA[est_uf]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="81">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f5574b58-2509-445a-9aae-15b5a43fa72f"/>
+				<textFieldExpression><![CDATA[$F{est_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="309" height="20" uuid="fc67cdcf-ca6b-4539-bf7f-5e07f3c6e57f"/>
+				<textFieldExpression><![CDATA[$F{est_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="543deb99-d171-48f0-811a-50358105f304"/>
+				<textFieldExpression><![CDATA[$F{est_uf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -119,6 +119,7 @@
 	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl"/>
 	<bean id="srvEntidade" class="br.com.srv.implementacao.SrvEntidadeImpl"/>
 	<bean id="srvCidade" class="br.com.srv.implementacao.SrvCidadeImpl"/>
+
 	
 	<!-- DAOS -->
 	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin"/>
@@ -131,7 +132,12 @@
 	<bean id="mensagemController" name="mensagemController" class="br.com.project.geral.controller.MensagemController" />
 	<bean id="estadoController"   name="estadoController"   class="br.com.project.geral.controller.EstadoController" />
 	<bean id="cidadeController"   name="cidadeController"   class="br.com.project.geral.controller.CidadeController" />
+	<bean id="tituloController"   name="tituloController" class="br.com.project.geral.controller.TituloController" />
 	<bean id="sessionController"  class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
+	
+	
+	
+	
 	
 	
 </beans>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
@@ -86,6 +87,7 @@ public class MensagemBeanView  extends BeanManagedViewAbstract{
 		
 		
 		
+		@RequestMapping("**/buscarUsuarioDestinoMsg")
 		public void buscarUsuarioDestinoMsg(HttpServletResponse httpServletResponse,
 				 @RequestParam(value= "codEntidade") Long codEntidade) throws Exception {
 			

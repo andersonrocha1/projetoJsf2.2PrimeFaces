@@ -41,8 +41,10 @@
 					<p:outputLabel style="margin-left: 1px;" />
 					<p:inputText id="loginOrigemMsgDialog" readonly="true"
 						immediate="true"
+						required="true" requiredMessage="Usuário não carregado..." style="width: 376px;" 
 						value="#{mensagemBeanView.objetoSelecionado.usr_origem.ent_login}"
-						required="true" style="width: 376px;" />
+						
+						/>
 				</p:row>
 			</p:column>
 			<p:column>
@@ -64,7 +66,7 @@
 						onblur="pesquisarUserDestinoPerderFocoDialog(this.value);addDestinoMsg(this.value);"
 						value="#{mensagemBeanView.objetoSelecionado.usr_destino.ent_codigo}"
 						immediate="false" required="true"
-						requiredMessage="Informe o destino." />
+						requiredMessage="Informe o destinatário..." />
 					<p:commandButton id="buttonPesquisaDestinoMsgDialog"
 						icon="imgPesquisa" ajax="true" immediate="true"
 						actionListener="#{funcionarioBeanView.setarVariaveisNulas}"

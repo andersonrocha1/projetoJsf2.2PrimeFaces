@@ -31,6 +31,7 @@ import br.com.project.geral.controller.EntidadeController;
 //import br.com.project.model.classes.Bairro;
 import br.com.project.model.classes.Cidade;
 import br.com.project.model.classes.Entidade;
+import br.com.project.util.all.Messagens;
 //import br.com.project.model.classes.Filial;
 
 @Controller
@@ -63,14 +64,13 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	//@Autowired
 	//private FilialController filialController;
 	
-	//@Override
-	/*public StreamedContent getArquivoReport() throws Exception {
-		super.setNomeRelatorioJasper("report_funcionario");
-		super.setNomeRelatorioSaida("report_funcionario");
-		List<?> list = entidadeController.findListByProperty(Entidade.class, "ent_tipo", "TIPO_CADASTRO_FUNCIONARIO");
-		super.setListDataBeanColletionReport(list); 
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("relat_funcionario");
+		super.setNomeRelatorioSaida("relat_funcionario");
+		super.setListDataBeanColletionReport(entidadeController.findList(getClassImplemente())); 
 		return super.getArquivoReport();
-	}*/
+	}
 
 	public String getUsuarioLogadoSecurity() {
 		return contextoBean.getAuthentication().getName();
@@ -136,7 +136,7 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	}
 
 	@Override
-	protected Class<?> getClassImplemente() {
+	protected Class<Entidade> getClassImplemente() {
 		return Entidade.class;
 	}
 	
@@ -200,6 +200,18 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void saveNotReturn() throws Exception {
+		
+		if (!objetoSelecionado.getAcessos().contains("USER")){
+			objetoSelecionado.getAcessos().add("USER");
+		}
+		objetoSelecionado = entidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
+		//objetoSelecionado = new Entidade();
+		sucesso();
+		
+	
+		/*
+		
 			objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_FUNCIONARIO);
 			
 			if (validarCampoObrigatorio(objetoSelecionado)) {
@@ -209,10 +221,16 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 					return;
 				}
 				
-				gravaFuncionario();
+				objetoSelecionado =  entidadeController.merge(objetoSelecionado);
+				list.add(objetoSelecionado);
+				sucesso();
+				
+				//gravaFuncionario();
 			}
+			*/
+			
 	}
-
+/*
 	private void gravaFuncionario() throws Exception {
 		list.clean();
 		List<Permissao> permissoesConverter = getConvertPermissoes(); 
@@ -226,22 +244,29 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 		list.add(objetoSelecionado);
 		objetoSelecionado = new Entidade();
 		sucesso();
-	}
+	}*/
 	
 	@Override
 	public void saveEdit() throws Exception {
+		objetoSelecionado = entidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
+		objetoSelecionado = new Entidade();
+		Messagens.msgSeverityInfor("Atualizado com sucesso!!!");
+		
+		/*
 		if (validarCampoObrigatorio(objetoSelecionado)) {
-			gravaFuncionario();
+			//gravaFuncionario();
 		}
+		*/
 	}
-/*
+
 	public List<SelectItem> getListTipoPessoa() {
 		List<SelectItem> items = new ArrayList<SelectItem>();
 		for (TipoPessoa tipoPessoa : TipoPessoa.values()) {
 			items.add(new SelectItem(tipoPessoa.name(), tipoPessoa.toString()));
 		}
 		return items;
-	}*/
+	}
 
 	//@RequestMapping("**/addBairroFunc")
 	/*
@@ -321,8 +346,8 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "and entity.tipoEntidade = 'FUNCIONARIO' ";
 	}
 
 	

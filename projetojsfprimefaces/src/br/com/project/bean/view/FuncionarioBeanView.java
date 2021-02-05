@@ -66,8 +66,8 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
-		super.setNomeRelatorioJasper("relat_funcionario");
-		super.setNomeRelatorioSaida("relat_funcionario");
+		super.setNomeRelatorioJasper("relat_funcionarios");
+		super.setNomeRelatorioSaida("relat_funcionarios");
 		super.setListDataBeanColletionReport(entidadeController.findList(getClassImplemente())); 
 		return super.getArquivoReport();
 	}
@@ -204,10 +204,18 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 		if (!objetoSelecionado.getAcessos().contains("USER")){
 			objetoSelecionado.getAcessos().add("USER");
 		}
-		objetoSelecionado = entidadeController.merge(objetoSelecionado);
-		list.add(objetoSelecionado);
-		//objetoSelecionado = new Entidade();
-		sucesso();
+		
+		if(entidadeController.existeCpf(objetoSelecionado.getCpf())) {
+			
+			Messagens.msgSeverityInfor("Este CPF já está cadastrado no sistema!");
+			
+		}else {
+			
+			objetoSelecionado = entidadeController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			//objetoSelecionado = new Entidade();
+			sucesso();
+		}
 		
 	
 		/*

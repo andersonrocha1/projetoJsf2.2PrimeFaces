@@ -71,9 +71,9 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	
 	//JDBC do Spring
-	JdbcTemplate geJdbcTemplate();
+	JdbcTemplate getJdbcTemplate();
 	
-	SimpleJdbcTemplate geSimpleJdbcTemplate();
+	SimpleJdbcTemplate getSimpleJdbcTemplate();
 	
 	SimpleJdbcInsert getSimpleJdbcInsert();
 	

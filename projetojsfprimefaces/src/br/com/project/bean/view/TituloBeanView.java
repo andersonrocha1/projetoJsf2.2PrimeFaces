@@ -40,9 +40,9 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	private String urlBaixar = "/cadastro/financeiro/baixar_titulo.jsf?faces-redirect=true";
 	
 	
-	/*public void init() throws Exception {
+	public void init() throws Exception {
 		objetoSelecionado.setEnt_codigoabertura(contextoBean.getEntidadeLogada());
-	}*/
+	}
 
 	@Resource
 	private TituloController tituloController;
@@ -256,10 +256,10 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
-	/*public String efetuarBaixa() throws Exception {
+	public String efetuarBaixa() throws Exception {
 			objetoSelecionado.setEnt_codigobaixa(contextoBean
 					.getEntidadeLogada());
 			objetoSelecionado.setTit_databaixa(new Date());
@@ -272,7 +272,7 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 			addMsg("Baixa realizada com sucesso.");
 		return urlBaixar;
 
-	}*/
+	}
 	
 	public List<Entidade> pesquisaPagador(String nome) throws Exception{
 		

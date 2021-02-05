@@ -201,7 +201,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public JdbcTemplate geJdbcTemplate() {
+	public JdbcTemplate getJdbcTemplate() {
 		// TODO Auto-generated method stub
 		return jdbcTemplete;
 		
@@ -209,7 +209,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public SimpleJdbcTemplate geSimpleJdbcTemplate() {
+	public SimpleJdbcTemplate getSimpleJdbcTemplate() {
 		// TODO Auto-generated method stub
 		return simpleJdbcTemplate;
 	}

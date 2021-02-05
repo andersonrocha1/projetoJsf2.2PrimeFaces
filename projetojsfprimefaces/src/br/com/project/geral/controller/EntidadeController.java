@@ -49,6 +49,13 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 		return (List<Entidade>) getSession().createQuery(" from Entidade where ent_nomefantasia like '%" + nome + "%'").list();
 	}
 
+	public boolean existeCpf(String cpf) throws Exception {
+		
+	return super.findListByQueryDinamica("from Entidade where cpf = '"+ cpf +"'").size() > 0;
+		
+		
+	}
+
 
 
 }

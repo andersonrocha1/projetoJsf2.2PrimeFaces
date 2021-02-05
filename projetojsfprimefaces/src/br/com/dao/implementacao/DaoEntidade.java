@@ -17,7 +17,7 @@ public class DaoEntidade extends ImplementacaoCrud<Entidade> implements
 
 	@Override
 	public Date getUltimoAcessoEntidadeLogada(String name) {
-		SqlRowSet rowSet = super.geJdbcTemplate().queryForRowSet(
+		SqlRowSet rowSet = super.getJdbcTemplate().queryForRowSet(
 				"select ent_ultimaacesso from entidade where ent_inativo is false and ent_login = ?",
 				new Object[] { name });
 		return rowSet.next() ? rowSet.getDate("ent_ultimaacesso") : null;
@@ -26,14 +26,14 @@ public class DaoEntidade extends ImplementacaoCrud<Entidade> implements
 	@Override
 	public void updateUltimoAcessoUser(String login) {
 		String sql = "update entidade set ent_ultimaacesso = current_timestamp where ent_inativo is false and ent_login = ? ";
-		super.geSimpleJdbcTemplate().update(sql, login);
+		super.getSimpleJdbcTemplate().update(sql, login);
 	}
 
 	@Override
 	public boolean existeUsuario(String ent_login) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select count(1) >= 1 from entidade where ent_login = '").append(ent_login).append("' ");
-		return super.geJdbcTemplate().queryForObject(builder.toString(), Boolean.class);
+		return super.getJdbcTemplate().queryForObject(builder.toString(), Boolean.class);
 	}
 
 }

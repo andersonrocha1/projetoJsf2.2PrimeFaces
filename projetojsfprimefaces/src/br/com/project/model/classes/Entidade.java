@@ -70,7 +70,8 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimaacesso;
 	
-	
+	@Column(unique = true)
+	private String cpf;
 	
 	@CollectionOfElements
 	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
@@ -91,20 +92,7 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_datacadastro = new Date();
 	
-	@Version
-	@Column(name = "versionNum")
-	private int versionNum;
 
-	protected int getVersionNum() {
-		return versionNum;
-	}
-
-	public void setVersionNum(int versionNum) {
-		this.versionNum = versionNum;
-	}
-	
-	
-	
 	public String getEnt_email() {
 		return ent_email;
 	}
@@ -182,6 +170,13 @@ public class Entidade implements Serializable {
 	}
 	public void setEnt_senha(String ent_senha) {
 		this.ent_senha = ent_senha;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	
 	

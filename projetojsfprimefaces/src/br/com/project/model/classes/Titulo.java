@@ -44,13 +44,17 @@ public class Titulo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "titulo_seq")
 	private Long tit_codigo;
 	
+	@IdentificaCampoPesquisa(descricaoCampo = "Documento", campoConsulta = "tit_documento")
+	@Column(length = 18)
+	private String tit_documento;
+	
 	@IdentificaCampoPesquisa(descricaoCampo = "Tipo", campoConsulta = "tit_tipo")
 	@Enumerated(EnumType.STRING)
 	private TipoTitulo tit_tipo; //PAGAR OU RECEBER
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Origem", campoConsulta = "tit_origem")
 	@Enumerated(EnumType.STRING)
-	private TituloOrigem tit_origem;
+	private TituloOrigem tit_origem;//Comissão ou Origem
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Vencimento", campoConsulta = "tit_datavencimento")
 	@Temporal(TemporalType.DATE)
@@ -59,6 +63,10 @@ public class Titulo implements Serializable {
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date tit_datahora = new Date();
+	
+	@IdentificaCampoPesquisa(descricaoCampo = "Data da baixa", campoConsulta = "tit_databaixa")
+	@Temporal(TemporalType.DATE)
+	private Date tit_databaixa;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Usuário abertura", campoConsulta = "ent_codigoabertura.ent_nomefantasia", principal = 1)
 	@Basic
@@ -84,7 +92,7 @@ public class Titulo implements Serializable {
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Valor R$", campoConsulta = "tit_valor")
 	@Column(scale = 4, precision = 15)
-	private BigDecimal tit_valor = null;
+	private BigDecimal tit_valor = BigDecimal.ZERO;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Desconto em baixa", campoConsulta = "tit_descontobaixa")
 	@Column(scale = 4, precision = 15)
@@ -103,6 +111,23 @@ public class Titulo implements Serializable {
 	private String tit_observacao;
 	
 	private Boolean tit_baixado = Boolean.FALSE;
+	
+	
+	@Version
+	@Column(name = "versionNum")
+	private int versionNum;
+
+
+
+	public int getVersionNum() {
+		return versionNum;
+	}
+
+
+
+	public void setVersionNum(int versionNum) {
+		this.versionNum = versionNum;
+	}
 
 
 
@@ -114,6 +139,15 @@ public class Titulo implements Serializable {
 
 	public void setTit_codigo(Long tit_codigo) {
 		this.tit_codigo = tit_codigo;
+	}
+	
+
+	public String getTit_documento() {
+		return tit_documento;
+	}
+
+	public void setTit_documento(String tit_documento) {
+		this.tit_documento = tit_documento;
 	}
 
 
@@ -186,6 +220,16 @@ public class Titulo implements Serializable {
 
 	public void setTit_datahora(Date tit_datahora) {
 		this.tit_datahora = tit_datahora;
+	}
+	
+
+	public Date getTit_databaixa() {
+		return tit_databaixa;
+	}
+
+
+	public void setTit_databaixa(Date tit_databaixa) {
+		this.tit_databaixa = tit_databaixa;
 	}
 
 

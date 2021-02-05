@@ -55,6 +55,7 @@
 								value="#{funcionarioBeanView.objetoSelecionado.tipoEntidade}"
 								required="true" requiredMessage="Informe o campo tipo.">
 								<f:selectItem itemValue="FUNCIONARIO" itemLabel="Funcionário"/>
+								<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
 							</p:selectOneMenu>
 						</p:row>
 					</p:column>
@@ -82,6 +83,27 @@
 					<p:column>
 						<p:row>
 							<p:message for="ent_nomefantasia" />
+						</p:row>
+					</p:column>
+					
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="cpf" id="labelCpf"
+								value="CPF Nº * : " />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputMask mask="999.999.999-99" id="cpf"
+								value="#{funcionarioBeanView.objetoSelecionado.cpf}"
+								required="true" requiredMessage="Informe o campo Cpf."
+								maxlength="100" styleClass="estyleInputName"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="cpf" />
 						</p:row>
 					</p:column>
 
